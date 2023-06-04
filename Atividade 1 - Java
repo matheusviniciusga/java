@@ -1,0 +1,91 @@
+// Feito por Matheus  Vinícius e Hannah Sales
+
+import java.util.Scanner;
+
+public class Main {
+    
+	public static void main(String[] args) {
+		
+		int opcao;
+		double cubo, lcubo, vcubo;
+		double paralelepipedo, altpale, compale, larpale, vpale;
+		double cilindro, altcilin, rcilin, vcili;
+		double esfera, resf, vesf;
+		//double radicando;
+		
+		Scanner dado;
+		dado = new Scanner(System.in);
+		
+		do{
+		    menu();
+		    System.out.print("\nEscolha a opção: ");
+            opcao = dado.nextInt();
+            
+            switch(opcao){
+                case 1:
+                    System.out.print("\nDigite o Lado do Cubo: ");
+                    lcubo = dado.nextDouble();
+                    vcubo = volumeCubo(lcubo);
+                    System.out.println("O volume do Cudo " + lcubo + " é " + vcubo);
+                break;
+                case 2:
+                    System.out.println("\nCalculo do Paralelepípedo -");
+                    System.out.print("Digite a Altura do Paralelepípedo: ");
+                    altpale = dado.nextDouble();
+                    System.out.print("Digite o Comprimento do Paralelepípedo: ");
+                    compale = dado.nextDouble();
+                    System.out.print("Digite a Largura do Paralelepípedo: ");
+                    larpale = dado.nextDouble();
+                    vpale = volumeParalelepipedo(altpale, compale, larpale);
+                    System.out.println("O volume do Paralelepípedo " +altpale+ ", " +compale+ " e " +larpale+ ", é " +vpale);
+                break;
+                case 3:
+                    System.out.println("\nCalculo do Cilíndro -");
+                    System.out.print("Digite a Altura do Cilíndro: ");
+                    altcilin = dado.nextDouble();
+                    System.out.print("Digite o Raio do Cilíndro: ");
+                    rcilin = dado.nextDouble();
+                    vcili = volumeCilindro(altcilin, rcilin);
+                    System.out.println("O volume do Cilíndro " +altcilin+ ", " +rcilin+ ", é " +vcili);
+                break;
+                case 4:
+                    System.out.println("\nCalculo da Esfera -");
+                    System.out.print("Digite o Raio da Esfera: ");
+                    resf = dado.nextDouble();
+                    vesf = volumeEsfera(resf);
+                    System.out.println("O volume da Esfera " +resf+ ", é " +vesf);
+                break;
+                case 5:
+                    System.out.println("\nFim do Programa.");
+                break;
+                default: System.out.println("\nOpção Inválida.");
+                
+            }
+		}while(opcao!=0);
+		
+	}
+	
+	public static void menu(){
+        System.out.println("\n(1) Calcular o Volume do Cubo.");
+        System.out.println("(2) Calcular o Volume do Paralelepipedo.");
+        System.out.println("(3) Calcular o Volume do Cilíndro.");
+        System.out.println("(4) Calcular o Volume da Esfera.");
+        System.out.println("(5) Sair.");
+    }
+    
+    public static double volumeCubo(double lcubo){
+        return (lcubo*lcubo*lcubo);
+    }
+    
+    private static double volumeParalelepipedo(double altpale, double compale, double larpale) {
+        return (altpale*compale*larpale);
+    }
+    
+    private static double volumeCilindro(double altcilin, double rcilin) {
+        return 3.14 * (rcilin*rcilin) * altcilin;
+    }
+    
+    private static double volumeEsfera(double resf) {
+        return (4/3) * 3.14 * (resf * resf * resf);
+    }
+}
